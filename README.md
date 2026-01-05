@@ -33,7 +33,7 @@ The solution is composed of **6 isolated microservices** communicating via HTTP/
 | **Analytics** | 8087 | Real-time dashboards for organizers |
 
 ### High-Level Architecture (C4 Model)
-![System Architecture](Architecture.png)
+![System Architecture](Figura_1.png)
 *(Figure 1: Container diagram showing microservices and external integrations)*
 
 ---
@@ -43,7 +43,7 @@ The solution is composed of **6 isolated microservices** communicating via HTTP/
 We implemented the **Database-per-Service** pattern to ensure loose coupling. Each microservice owns its schema. Consistency is managed through logical references and orchestrated business flows.
 
 ### Logical Entity-Relationship Diagram
-![Database Schema](Database.png)
+![Database Schema](Figura_3.png)
 *(Figure 3: Independent schemas for Auth, Users, Events, Orders, and Payments)*
 
 ---
@@ -53,7 +53,7 @@ We implemented the **Database-per-Service** pattern to ensure loose coupling. Ea
 ### 1. Purchase & Async Payments (Stripe)
 Handling distributed transactions was a key challenge. The system uses a state machine to handle **Stripe Webhooks** asynchronously, ensuring consistency even if the user closes the browser.
 
-![Payment Sequence](PaymentFlow.png)
+![Payment Sequence](Figura_4.png)
 *(Figure 4: Sequence diagram handling 400/500 errors and webhook confirmation)*
 
 ### 2. On-Site QR Validation
@@ -65,7 +65,7 @@ Staff members (EMPLOYEE role) use the app to scan user QR codes. The system vali
 
 The local environment is orchestrated using **Docker Compose**, creating a dedicated network (`packedgo-network`) for all services and databases.
 
-![Docker Deployment](Docker.png)
+![Docker Deployment](Figura_2.png)
 
 ---
 
